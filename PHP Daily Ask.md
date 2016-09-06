@@ -79,7 +79,19 @@ $xmlstring = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
 //将object转变成json,再json_decode转变成数组
 $arr = json_decode(json_encode($xmlstring),true); 
 ```
+##NO.4 如何获取客户端的ip地址与MAC地址
+###解决办法
+ - 获取ip地址：可以通过变量$_SERVER['REMOTE_ADDR']获取。
+ - 获取mac地址：不可能。
 
+###问题讨论：为什么能够获取ip地址，不能获取mac地址呢？
 
+客户端访问服务器，是通过http协议访问的。
+http协议的header信息中，包含了客户端的ip地址，也就是ip地址带给了服务器，那么服务器就可以获取客户端ip地址。
+![WechatIMG47.jpeg-78.4kB][1]
+对于MAC地址，http协议是不会发送给服务端的，那么，服务端就无法获取。
 
  
+
+
+  [1]: http://static.zybuluo.com/ericliu001/a4xb3xao973plbx05pczr0wz/WechatIMG47.jpeg
