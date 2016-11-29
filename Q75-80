@@ -1,0 +1,18 @@
+﻿##NO.78 什么是opcode?常见的opcode cache 管理工具有哪些？
+###1、什么是opcode?
+
+当解释器完成对代码的分析后，便将它们生成可以直接运行的中间代码，也称为操作码（Operate Code，opcode）。
+
+###2、为什么要使用opcode cache?
+####php脚本的生命周期
+请求PHP脚本时，会经过五个步骤，如下图所示：
+![image_1b2nnj56irfdi1g12ac1mk38jt9.png-22.6kB][1]
+Zend引擎必须从文件系统读取文件、扫描其词典和表达式、解析文件、创建要执行的计算机代码（称为Opcode），最后执行Opcode。
+####启用opcode cache
+
+每一次请求PHP脚本都会执行一遍以上步骤，如果PHP源代码没有变化，那么Opcode也不会变化，显然没有必要每次都重行生成Opcode，我们可以把Opcode缓存下来，以后直接访问缓存的Opcode岂不是更快，启用Opcode缓存之后的流程图如下所示：
+![image_1b2nnu81v1pvjqo91ugrfbp2prm.png-33kB][2]
+##3、常见的opcode cache 管理工具有哪些？
+Optimizer+（Optimizer+于2013年3月中旬改名为Opcache，PHP 5.5集成Opcache）、eAccelerator、xcache、APC ...
+  [1]: http://static.zybuluo.com/ericliu001/6mked1x4ai35mshy16bri4rf/image_1b2nnj56irfdi1g12ac1mk38jt9.png
+  [2]: http://static.zybuluo.com/ericliu001/hgcg1iipf5nhmfnvghpndk85/image_1b2nnu81v1pvjqo91ugrfbp2prm.png
